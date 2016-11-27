@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+		<title>Anguflix</title>
+</head>
+<body ng-app="netflixApp">
+<!-- *************************TOP SECTION********************************************************************************* -->
+	<section ng-controller="FlixCtrl">
+		<div class ='row'>
+			<div class="col-md-12">
+				<p id="budget">Budget left: {{budget}}</p>
+			</div>
+		</div>
+
+		<div class="row">			
+			<div class="col-md-12">
+				<h2>My Collection</h2><br>
+				<input type="text" placeholder="Movie Title" id="movieSearch">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4" ng-repeat="return in president_elect">
+					<img class="img" src="{{return.image}}"><br>
+					<h2>{{return.title}}</h2><h4>{{return.year}}</h4>
+					<p>{{return.description}}</p>
+					<span><strong>${{return.price}}</strong></span>   <i class="fa fa-superpowers" aria-hidden="true" ng-click="remove($index)"></i>
+			</div>
+		</div>
+		
+
+	
+	<!-- ******************************MOVIE SECTION********************************************************************* -->
+				<hr>
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Movies</h2>
+					<input type="text" placeholder="Movie Title" id="movieSearch">
+					<!--OTHER INPUT  -->
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4" ng-repeat="return in allMovies track by $index" ng-click="addMovie($index)">
+					<img class="img" src="{{return.image}}"><br>
+					<h2>{{return.title}}</h2><h4>{{return.year}}</h4>
+					<p>{{return.description}}</p>
+					<h4>{{return.price}}</h4>
+				</div>
+			</div>
+	</section><!-- END OF FLixCtrl -->
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="netflixApp.js"></script>
+	<script type="text/javascript" src="service.js"></script>
+	<script type="text/javascript" src="FlixCtrl.js"></script>
+</body>
+</html>
